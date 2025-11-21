@@ -33,7 +33,7 @@ public class Lab6p1_jamesortiz {
                    System.out.println("menor a mayor :");
                    imprimir(menoramayor(numero));  
                    System.out.println("mayor a menor");
-                   imprimir(mayormenor(numero));
+                   imprimir(mayorAmenor(numero));
                    break;
                }
                case 2 : {
@@ -63,7 +63,7 @@ public class Lab6p1_jamesortiz {
                    int[] numero = lecturaramdom(size);
                    System.out.println("arreglo original: ");
                    imprimir(numero);
-                   
+                   imprimir(PRIMOS(numero));
                    break;
                } case 4 :{
                    valid = false;
@@ -82,6 +82,7 @@ public class Lab6p1_jamesortiz {
         System.out.println("1. opcion 1");
         System.out.println("2. opcion 2");
         System.out.println("3. opcion 3");
+        System.out.println("4 salir");
         System.out.println("Elige una opcion");
         int opc = leer.nextInt();
         return opc;
@@ -100,19 +101,19 @@ public class Lab6p1_jamesortiz {
         }
         System.out.println();
     }
-    public static int [] mayormenor(int [] lis){
-            
-            for (int i = 0 ; i>lis.length-1 ; i++) {
-                for (int j = i+1; j < lis.length-1; j++) {
-                    if (lis[i] < lis[j+1]) {
-                        int aux = lis[i];
-                        lis[i] = lis[j+1];
-                        lis[j+1] = aux;
-                    }
+    public static int[] mayorAmenor(int[] temp) {
+        for (int i = 0; i < temp.length - 1; i++) {
+            for (int j = 0; j < temp.length - 1; j++) {
+                if (temp[j] < temp[j + 1]) {  // Cambio correcto
+                    int aux = temp[j];
+                    temp[j] = temp[j + 1];
+                    temp[j + 1] = aux;
                 }
             }
-            return lis;
+        }
+        return temp;
     }
+         
      public static int [] menoramayor(int [] x){
             int[] temp = x;
             for (int i = 0; i < temp.length - 1; i++) {
@@ -143,9 +144,6 @@ public class Lab6p1_jamesortiz {
                     cont++;
                 }
             }
-           
-           
-           
             int[] temp = new int[cont];
             int pos = 0;
             for (int i = 0; i < x.length; i++) {
