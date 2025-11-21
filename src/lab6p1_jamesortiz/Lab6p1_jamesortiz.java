@@ -61,9 +61,17 @@ public class Lab6p1_jamesortiz {
                        System.out.println("ingresse un valor valido");
                    }
                    int[] numero = lecturaramdom(size);
-                   System.out.println("arreglo original: ");
-                   imprimir(numero);
-                   imprimir(PRIMOS(numero));
+                   int[] vali = PRIMOS(numero);
+                     System.out.println("cadena original");
+                       imprimir(numero);
+                   if (vali.length == 0){
+                       System.out.println("no contiene ");
+                   }else{
+                     
+                       int [] primo = primomayormenor(vali);
+                       System.out.println("primo mayor: " + primo[0]);
+                       System.out.println("primo menor: "+ primo[1]);
+                   }
                    break;
                } case 4 :{
                    valid = false;
@@ -163,6 +171,24 @@ public class Lab6p1_jamesortiz {
                     return false;
             }}
             return true;
+        }
+        public static int [] primomayormenor(int [] temp){
+            int mayor = temp[0];
+            int menor = temp[0];
+            for (int n=0;n<temp.length;n++){
+                if (n<mayor){
+                    mayor=n;
+                }if (n>menor){
+                    menor=n;
+                }
+                
+            }
+            int [] res = new int[2];
+            
+             res [0] = mayor;
+             res [1] = menor;
+                    
+            return temp;
         }
         
      
