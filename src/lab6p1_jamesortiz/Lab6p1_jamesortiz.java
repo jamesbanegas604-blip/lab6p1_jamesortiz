@@ -30,27 +30,40 @@ public class Lab6p1_jamesortiz {
                    int [] numero = lecturaramdom(size);
                    System.out.println("Array origina :");
                    imprimir(numero);
-                   System.out.println("Mayor a menor :");
+                   System.out.println("menor a mayor :");
+                   imprimir(menoramayor(numero));  
+                   System.out.println("mayor a menor");
                    imprimir(mayormenor(numero));
-                   imprimir(menoramayor(numero));        
                    break;
                }
                case 2 : {
                    System.out.println("ingrese el tamaño");
                    int size = leer.nextInt();
-                   int [] numero = lecturaramdom(size);
+                   while (size < 2){
+                       System.out.println("ingresse un valor valido");
+                   }
+                   int[] numero = lecturaramdom(size);
                    int[] numero2 = lecturaramdom(size);
                     System.out.println("Arreglo 1:");
                     imprimir(numero);
                     System.out.println("Arreglo 2:");
                     imprimir(numero2);
                     System.out.println("Suma paralela:");
-                    imprimir(sumapralelo(numero, numero2));
+                    System.out.println(sumapralelo(numero, numero2));
                     break;
                    
                    
                } 
                case 3: {
+                   System.out.println("ingrese el tamaño");
+                   int size = leer.nextInt();
+                   while (size < 2){
+                       System.out.println("ingresse un valor valido");
+                   }
+                   int[] numero = lecturaramdom(size);
+                   System.out.println("arreglo original: ");
+                   imprimir(numero);
+                   
                    break;
                } case 4 :{
                    valid = false;
@@ -87,21 +100,21 @@ public class Lab6p1_jamesortiz {
         }
         System.out.println();
     }
-    public static int [] mayormenor(int [] x){
-            int[] temp = x.clone();
-            for (int i = 0; i < temp.length - 1; i++) {
-                for (int j = 0; j < temp.length - 1 - i; j++) {
-                    if (temp[j] > temp[j + 1]) {
-                        int aux = temp[j];
-                        temp[j] = temp[j + 1];
-                        temp[j + 1] = aux;
+    public static int [] mayormenor(int [] lis){
+            
+            for (int i = 0 ; i>lis.length-1 ; i++) {
+                for (int j = i+1; j < lis.length-1; j++) {
+                    if (lis[i] < lis[j+1]) {
+                        int aux = lis[i];
+                        lis[i] = lis[j+1];
+                        lis[j+1] = aux;
                     }
                 }
             }
-            return temp;
+            return lis;
     }
      public static int [] menoramayor(int [] x){
-            int[] temp = x.clone();
+            int[] temp = x;
             for (int i = 0; i < temp.length - 1; i++) {
                 for (int j = 0; j < temp.length - 1 - i; j++) {
                     if (temp[j] > temp[j + 1]) {
@@ -113,13 +126,47 @@ public class Lab6p1_jamesortiz {
             }
             return temp;
     }
-    public static int[] sumapralelo(int[] x, int[] y) {
+    public static int sumapralelo(int[] x, int[] y) {
         int[] temp = new int[x.length];
+        int acum=0;
         for (int i = 0; i < temp.length; i++) {
             temp[i] = x[i] * y[i];
+            acum += temp[i];
         }
-        return temp;
+        return acum;
     }
+    public static int[] PRIMOS(int[] x) {
+            
+            int cont = 0;
+            for (int i = 0; i < x.length; i++) {
+                if (esPrimo(x[i])) {
+                    cont++;
+                }
+            }
+           
+           
+           
+            int[] temp = new int[cont];
+            int pos = 0;
+            for (int i = 0; i < x.length; i++) {
+                if (esPrimo(x[i])) {
+                    temp[pos++] = x[i];
+                }
+            }
+            
+
+            return temp;
+        }
+
+        public static boolean esPrimo(int n) {
+            if (n <= 1) return false;
+            for (int i = 2; i <= n / 2; i++) {
+                if (n % i == 0) {
+                    return false;
+            }}
+            return true;
+        }
+        
      
      
         
